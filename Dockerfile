@@ -1,7 +1,7 @@
-FROM ubuntu:15.04
-MAINTAINER tdudgeon@informaticsmatters.com
+# currently need backports as openjdk-8-jdk not availalbe on vanilla jessie
+FROM debian:jessie-backports
+MAINTAINER Tim Dudgeon <tdudgeon@informaticsmatters.com>
 # WARNING this takes about an hour to build
-# WARNING building the java wrappers does not work at present
 
 ENV RDKIT_BRANCH=Release_2015_03_1
 
