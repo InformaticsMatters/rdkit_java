@@ -1,4 +1,4 @@
-# currently need backports as openjdk-8-jdk not availalbe on vanilla jessie
+# currently need backports as openjdk-8-jdk not available on vanilla jessie
 FROM debian:jessie-backports
 MAINTAINER Tim Dudgeon <tdudgeon@informaticsmatters.com>
 # WARNING this takes about an hour to build
@@ -17,17 +17,15 @@ RUN apt-get update && apt-get install -y \
  libboost-dev\
  libboost-python-dev\
  libboost-regex-dev\
- openjdk-8-jdk\
  swig2.0\
  git\
+ openjdk-8-jdk\
  wget
 
 
 RUN git clone -b $RDKIT_BRANCH --single-branch https://github.com/rdkit/rdkit.git
 
 ENV RDBASE=/rdkit
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RDBASE/lib
-ENV PYTHONPATH=$PYTHONPATH:$RDBASE
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 RUN mkdir $RDBASE/External/java_lib
@@ -40,4 +38,8 @@ RUN cmake -D RDK_BUILD_SWIG_WRAPPERS=ON ..
 RUN make
 RUN make install
 
-WORKDIR /
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RDBASE/lib:/rdkit/lib:$RDBASE/Code/JavaWrappers/gmwrapper
+ENV PYTHONPATH=$PYTHONPATH:$RDBASE
+ENV CLASSPATH=$RDBASE/Code/JavaWrappers/gmwrapper/org.RDKit.jar
+
+WORKDIR $RDBASE 

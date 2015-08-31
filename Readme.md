@@ -15,3 +15,5 @@ Then in the container:
 `./run.sh`
 
 Javadocs are built into the directory /rdkit/Code/JavaWrappers/gmwrapper/doc
+
+Note: this build only works with OpenJDK Java. Using Oracle Java fails with errors generating the javadocs.
