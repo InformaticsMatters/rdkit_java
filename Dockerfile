@@ -20,8 +20,7 @@ RUN apt-get update && apt-get install -y \
  swig2.0\
  git\
  openjdk-8-jdk\
- wget
-
+ curl
 
 RUN git clone -b $RDKIT_BRANCH --single-branch https://github.com/rdkit/rdkit.git
 
@@ -29,8 +28,8 @@ ENV RDBASE=/rdkit
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 RUN mkdir $RDBASE/External/java_lib
-RUN wget -O $RDBASE/External/java_lib/junit.jar http://search.maven.org/remotecontent?filepath=junit/junit/4.12/junit-4.12.jar
-RUN wget -O $RDBASE/External/java_lib/hamcrest-core.jar http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+RUN curl -o $RDBASE/External/java_lib/junit.jar -fSL http://search.maven.org/remotecontent?filepath=junit/junit/4.12/junit-4.12.jar
+RUN curl -o $RDBASE/External/java_lib/hamcrest-core.jar -fSL http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
 
 RUN mkdir $RDBASE/build
 WORKDIR $RDBASE/build
