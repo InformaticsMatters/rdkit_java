@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
  openjdk-8-jdk\
  curl
 
-ENV RDKIT_BRANCH=Release_2015_03_1
+ENV RDKIT_BRANCH=Release_2015_09_2
 RUN git clone -b $RDKIT_BRANCH --single-branch https://github.com/rdkit/rdkit.git
 
 ENV RDBASE=/rdkit
