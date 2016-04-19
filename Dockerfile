@@ -11,10 +11,10 @@ RUN apt-get update && apt-get install -y \
  sqlite3\
  libsqlite3-dev\
  libboost-dev\
- libboost-python-dev\
  libboost-system-dev\
  libboost-thread-dev\
  libboost-serialization-dev\
+ libboost-python-dev\
  libboost-regex-dev\
  swig2.0\
  git\
