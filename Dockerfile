@@ -4,8 +4,6 @@ MAINTAINER Tim Dudgeon <tdudgeon@informaticsmatters.com>
 # WARNING this takes about an hour to build
 
 RUN apt-get update && apt-get install -y \
- flex\
- bison\
  build-essential\
  python-numpy\
  cmake\
@@ -14,11 +12,14 @@ RUN apt-get update && apt-get install -y \
  libsqlite3-dev\
  libboost-dev\
  libboost-python-dev\
+ libboost-system-dev\
+ libboost-thread-dev\
+ libboost-serialization-dev\
  libboost-regex-dev\
  swig2.0\
  git\
  openjdk-8-jdk\
- curl
+ curl 
 
 ENV RDKIT_BRANCH=master
 RUN git clone -b $RDKIT_BRANCH --single-branch https://github.com/rdkit/rdkit.git
@@ -32,11 +33,11 @@ RUN curl -o $RDBASE/External/java_lib/hamcrest-core.jar -fSL http://search.maven
 
 RUN mkdir $RDBASE/build
 WORKDIR $RDBASE/build
-RUN cmake -D RDK_BUILD_SWIG_WRAPPERS=ON .. 
+RUN cmake -D RDK_BUILD_SWIG_WRAPPERS=ON -DRDK_BUILD_INCHI_SUPPORT=ON .. 
 RUN make
 RUN make install
 
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RDBASE/lib:/rdkit/lib:$RDBASE/Code/JavaWrappers/gmwrapper
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RDBASE/lib:/usr/lib/x86_64-linux-gnu:/rdkit/lib:$RDBASE/Code/JavaWrappers/gmwrapper
 ENV PYTHONPATH=$PYTHONPATH:$RDBASE
 ENV CLASSPATH=$RDBASE/Code/JavaWrappers/gmwrapper/org.RDKit.jar
 
