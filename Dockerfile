@@ -33,7 +33,7 @@ RUN curl -o $RDBASE/External/java_lib/hamcrest-core.jar -fSL http://search.maven
 
 RUN mkdir $RDBASE/build
 WORKDIR $RDBASE/build
-RUN cmake -D RDK_BUILD_SWIG_WRAPPERS=ON -DRDK_BUILD_INCHI_SUPPORT=ON .. 
+RUN cmake -D RDK_BUILD_SWIG_WRAPPERS=ON .. 
 RUN make
 RUN make install
 
