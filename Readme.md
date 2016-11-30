@@ -1,6 +1,14 @@
 # Dockerfile for building RDkit with Java wrappers.
 Includes a very simple Java example in the src directory. 
 
+## Branches
+
+* `master` - build from current RDKit master branch
+* `Release_2015_03_1` - build from the Release_2015_03_1 release tag
+* `Release_2015_09_2` - build from the Release_2015_09_2 release tag
+* `Release_2016_03_1` - build from the Release_2016_03_1 release tag
+* `Release_2016_09_2` - build from the Release_2016_09_2 release tag
+
 Run docker like this:
 `docker build .`
 `docker run -it --rm -v $PWD/src:/examples <container id> bash`
