@@ -3,7 +3,6 @@ MAINTAINER Tim Dudgeon <tdudgeon@informaticsmatters.com>
 
 RUN apt-get update && apt-get install -y openjdk-8-jdk
 
-ENV RDBASE=/rdkit
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 # base image already has RDKit built. We just need the java stuff
