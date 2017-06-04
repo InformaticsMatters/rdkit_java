@@ -3,7 +3,7 @@
 # Includes InCHI support.
 # WARNING: this takes about an hour to build
 
-FROM informaticsmatters/rdkit:latest
+FROM informaticsmatters/rdkit:Release_2017_03_1
 MAINTAINER Tim Dudgeon <tdudgeon@informaticsmatters.com>
 
 USER root
