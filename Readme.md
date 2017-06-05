@@ -1,4 +1,7 @@
 # Dockerfile for building RDkit with Java wrappers.
+
+Look at the different banches for specific versions.
+
 Includes a very simple Java example in the src directory. 
 
 Run docker like this:
