@@ -24,5 +24,5 @@ RUN cmake -D RDK_BUILD_SWIG_WRAPPERS=ON -DRDK_BUILD_INCHI_SUPPORT=ON .. &&\
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RDBASE/Code/JavaWrappers/gmwrapper
 ENV CLASSPATH=$RDBASE/Code/JavaWrappers/gmwrapper/org.RDKit.jar
 
-USER rdkit
+#USER rdkit
 WORKDIR $RDBASE 
